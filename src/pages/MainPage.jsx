@@ -26,7 +26,7 @@ const MainPage = () => {
       <div className="bg-blob blob-3"></div>
 
       {/* HERO SECTION */}
-      <section id="home" className="section" style={{ 
+      <section id="home" className="section hero-section" style={{ 
         backgroundImage: 'linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), url(/hero_water_facility.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -59,7 +59,7 @@ const MainPage = () => {
       {/* STATUS SECTION */}
       <section id="status" className="section bg-gradient-primary">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+          <div className="responsive-grid-2">
             <div>
               <h2 style={{ marginBottom: '1.5rem' }}>Project <span className="gradient-text">Development Status</span></h2>
               <div className="glass-panel" style={{ marginBottom: '2rem', borderLeft: '4px solid var(--color-accent)' }}>
@@ -69,7 +69,7 @@ const MainPage = () => {
                   Our team is committed to completing all necessary evaluations before advancing to capital deployment and construction.
                 </p>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+              <div className="responsive-grid-2-sm">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                   <div className="card-icon" style={{ margin: 0, width: '48px', height: '48px' }}><Cog /></div>
                   <span style={{ fontWeight: '600', color: 'var(--color-text-main)' }}>Engineering Review</span>
@@ -148,7 +148,7 @@ const MainPage = () => {
       {/* PROCESS SECTION */}
       <section id="process" className="section bg-gradient-sunset">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+          <div className="responsive-grid-2">
             <div style={{ order: 2 }}>
               <h2>How Salem Purified <span className="gradient-text-sunset">Water Is Made</span></h2>
               <p style={{ color: 'var(--color-text-muted)', marginBottom: '2rem', fontSize: '1.1rem' }}>
@@ -200,7 +200,7 @@ const MainPage = () => {
             </div>
           </div>
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center', marginBottom: '3rem' }}>
+          <div className="responsive-grid-2">
             <div style={{ position: 'relative' }}>
                <div style={{ position: 'absolute', top: '-15px', left: '-15px', right: '15px', bottom: '15px', background: 'linear-gradient(135deg, var(--color-purple), var(--color-pink))', borderRadius: 'var(--border-radius-lg)', zIndex: 0, opacity: 0.15 }}></div>
               <img src="/bottled_water_line.png" alt="Manufacturing Line" style={{ width: '100%', borderRadius: 'var(--border-radius-lg)', boxShadow: 'var(--shadow-lg)', position: 'relative', zIndex: 1 }} />
@@ -255,7 +255,7 @@ const MainPage = () => {
       {/* FAQ & DOCUMENTS SECTION */}
       <section id="faq-docs" className="section bg-gradient-primary">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '4rem' }}>
+          <div className="responsive-grid-faq">
             
             <div>
               <h2 style={{ marginBottom: '2.5rem' }}>Frequently Asked <span className="gradient-text">Questions</span></h2>
@@ -316,7 +316,7 @@ const MainPage = () => {
               For inquiries related to project development, engineering partnerships, or capital formation.
             </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', maxWidth: '1100px', margin: '0 auto' }}>
+          <div className="responsive-grid-contact">
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', justifyContent: 'center' }}>
               <div className="glass-panel card" style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', padding: '1.5rem' }}>
