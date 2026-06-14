@@ -75,9 +75,9 @@ const Header = () => {
                 </Link>
               );
             })}
-            <a href="/contact" className="btn btn-primary" style={{ padding: '0.55rem 1.2rem', fontSize: '0.9rem', marginLeft: '0.5rem' }}>
+            <Link to="/contact" className="btn btn-primary" style={{ padding: '0.55rem 1.2rem', fontSize: '0.9rem', marginLeft: '0.5rem' }}>
               Get In Touch
-            </a>
+            </Link>
           </nav>
 
           {/* Mobile Toggle */}
