@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -29,9 +29,9 @@ const Header = () => {
       {/* Top info strip */}
       <div className="info-strip">
         <div className="container" style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
-          <span>📞 (573) 706-7775</span>
-          <span>✉ admin@salempurifiedwater.com</span>
-          <span>📍 Salem, Missouri</span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Phone size={14} color="white" /> (573) 706-7775</span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><Mail size={14} color="white" /> admin@salempurifiedwater.com</span>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}><MapPin size={14} color="white" /> Salem, Missouri</span>
         </div>
       </div>
 
