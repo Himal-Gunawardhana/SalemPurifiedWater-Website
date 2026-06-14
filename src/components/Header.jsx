@@ -2,155 +2,139 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
+const navLinks = [
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+  { name: 'Project Spring', path: '/project-spring' },
+  { name: 'Salem Facility', path: '/salem-facility' },
+  { name: 'Products & Services', path: '/products' },
+  { name: 'Contact', path: '/contact' },
+];
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [location.pathname]);
-
-  const navLinks = [
-    { name: 'Status', path: '#status' },
-    { name: 'Compliance', path: '#compliance' },
-    { name: 'Process', path: '#process' },
-    { name: 'Products', path: '#products' },
-    { name: 'Project Spring', path: '#project-spring' },
-    { name: 'FAQ & Docs', path: '#faq-docs' },
-    { name: 'Contact', path: '#contact' },
-  ];
+  useEffect(() => { setIsMobileOpen(false); }, [location.pathname]);
 
   return (
-    <header className={isScrolled ? "glass-panel" : ""} style={{
-      position: 'sticky',
-      top: 0,
-      zIndex: 1000,
-      backgroundColor: isScrolled ? 'var(--glass-bg)' : 'var(--color-surface)',
-      borderBottom: isScrolled ? '1px solid var(--glass-border)' : '1px solid transparent',
-      boxShadow: isScrolled ? 'var(--shadow-md)' : 'none',
-      transition: 'all var(--transition-normal)',
-      borderRadius: isScrolled ? '0 0 var(--border-radius-lg) var(--border-radius-lg)' : '0',
-      padding: isScrolled ? '0' : '0'
-    }}>
-      <div className="container" style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'space-between',
-        padding: '1rem var(--spacing-sm)' 
-      }}>
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
-          <img 
-            src="/salemlogo.png" 
-            alt="Salem Purified Water Logo" 
-            style={{ height: '48px', width: 'auto', objectFit: 'contain' }} 
-            className="animate-pulse-soft"
-          />
-          <div>
-            <h1 style={{ fontSize: '1.25rem', margin: 0, color: 'var(--color-text-main)', letterSpacing: '-0.02em' }}>Salem Purified Water</h1>
-            <p className="gradient-text-sunset" style={{ fontSize: '0.7rem', margin: 0, textTransform: 'uppercase', letterSpacing: '1px', fontWeight: '600' }}>Project In Development</p>
-          </div>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav style={{ display: 'flex', gap: '1.5rem' }} className="desktop-nav">
-          {navLinks.map((link) => (
-            <a 
-              key={link.path} 
-              href={link.pathname === '/' ? `/${link.path}` : link.path}
-              className="nav-link"
-              style={{
-                color: 'var(--color-text-main)',
-                fontWeight: '600',
-                fontSize: '0.95rem',
-                position: 'relative',
-                padding: '0.5rem 0'
-              }}
-            >
-              {link.name}
-            </a>
-          ))}
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button 
-          className="mobile-menu-btn"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))', border: 'none', cursor: 'pointer', color: 'white', padding: '0.5rem', borderRadius: 'var(--border-radius-sm)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+    <>
+      {/* Top info strip */}
+      <div className="info-strip">
+        <div className="container" style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
+          <span>📞 (573) 706-7775</span>
+          <span>✉ admin@salempurifiedwater.com</span>
+          <span>📍 Salem, Missouri</span>
+        </div>
       </div>
 
-      {/* Mobile Navigation Dropdown */}
-      {isMobileMenuOpen && (
-        <nav className="glass-panel" style={{
-          position: 'absolute',
-          top: '100%',
-          left: 0,
-          right: 0,
-          padding: '1rem',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem',
-          borderRadius: '0 0 var(--border-radius-lg) var(--border-radius-lg)',
-          marginTop: '0.5rem',
-          borderTop: 'none'
-        }}>
-          {navLinks.map((link) => (
-            <a 
-              key={link.path} 
-              href={link.pathname === '/' ? `/${link.path}` : link.path}
-              onClick={() => setIsMobileMenuOpen(false)}
-              style={{
-                color: 'var(--color-text-main)',
-                fontWeight: '600',
-                padding: '0.75rem 1rem',
-                borderRadius: 'var(--border-radius-sm)',
-                background: 'rgba(37, 99, 235, 0.05)',
-                transition: 'background var(--transition-fast)'
-              }}
-            >
-              {link.name}
-            </a>
-          ))}
-        </nav>
-      )}
+      <header style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 1000,
+        backgroundColor: 'var(--white)',
+        borderBottom: isScrolled ? '1px solid var(--light-gray)' : '1px solid transparent',
+        boxShadow: isScrolled ? 'var(--shadow-md)' : 'none',
+        transition: 'all var(--transition)',
+      }}>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem var(--spacing-sm)' }}>
 
-      <style>{`
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          width: 0;
-          height: 2px;
-          bottom: 0;
-          left: 0;
-          background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-          transition: width var(--transition-fast);
-          border-radius: 2px;
-        }
-        .nav-link:hover {
-          color: var(--color-primary);
-        }
-        .nav-link:hover::after {
-          width: 100%;
-        }
-        @media (min-width: 993px) {
-          .mobile-menu-btn { display: none !important; }
-        }
-        @media (max-width: 992px) {
-          .desktop-nav { display: none !important; }
-        }
-      `}</style>
-    </header>
+          {/* Logo */}
+          <Link to="/" style={{ display: 'flex', alignItems: 'center' }}>
+            <img src="/salemlogo.png" alt="Salem Purified Water LLC" style={{ height: '52px', width: 'auto', objectFit: 'contain' }} />
+          </Link>
+
+          {/* Desktop Nav */}
+          <nav className="desktop-nav" style={{ display: 'flex', gap: '0.25rem', alignItems: 'center' }}>
+            {navLinks.map(link => {
+              const isActive = location.pathname === link.path;
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="nav-link"
+                  style={{
+                    color: isActive ? 'var(--sky-dark)' : 'var(--navy)',
+                    fontWeight: 600,
+                    fontSize: '0.9rem',
+                    padding: '0.5rem 0.85rem',
+                    borderRadius: 'var(--radius-sm)',
+                    position: 'relative',
+                    transition: 'all var(--transition-fast)',
+                    backgroundColor: isActive ? 'var(--sky-pale)' : 'transparent',
+                  }}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+            <a href="/contact" className="btn btn-primary" style={{ padding: '0.55rem 1.2rem', fontSize: '0.9rem', marginLeft: '0.5rem' }}>
+              Get In Touch
+            </a>
+          </nav>
+
+          {/* Mobile Toggle */}
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
+            style={{ background: 'var(--navy)', border: 'none', cursor: 'pointer', color: 'white', padding: '0.5rem', borderRadius: 'var(--radius-sm)', display: 'flex' }}
+            aria-label="Toggle menu"
+          >
+            {isMobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMobileOpen && (
+          <nav style={{
+            position: 'absolute', top: '100%', left: 0, right: 0,
+            background: 'var(--white)', borderTop: '1px solid var(--light-gray)',
+            boxShadow: 'var(--shadow-lg)', padding: '1rem',
+            display: 'flex', flexDirection: 'column', gap: '0.25rem',
+          }}>
+            {navLinks.map(link => (
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={() => setIsMobileOpen(false)}
+                style={{
+                  color: location.pathname === link.path ? 'var(--sky-dark)' : 'var(--navy)',
+                  fontWeight: 600,
+                  padding: '0.85rem 1rem',
+                  borderRadius: 'var(--radius-sm)',
+                  background: location.pathname === link.path ? 'var(--sky-pale)' : 'transparent',
+                  display: 'block',
+                  fontSize: '1rem',
+                }}
+              >
+                {link.name}
+              </Link>
+            ))}
+            <Link
+              to="/contact"
+              onClick={() => setIsMobileOpen(false)}
+              className="btn btn-primary"
+              style={{ marginTop: '0.5rem', justifyContent: 'center' }}
+            >
+              Get In Touch
+            </Link>
+          </nav>
+        )}
+
+        <style>{`
+          .nav-link:hover { color: var(--sky-dark) !important; background: var(--sky-pale) !important; }
+          @media (min-width: 993px) { .mobile-menu-btn { display: none !important; } }
+          @media (max-width: 992px) { .desktop-nav { display: none !important; } }
+        `}</style>
+      </header>
+    </>
   );
 };
 
