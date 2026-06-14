@@ -39,7 +39,9 @@ const Footer = () => {
 
           {/* Brand */}
           <div>
-            <img src="/salemlogo.png" alt="Salem Purified Water LLC" style={{ height: '56px', width: 'auto', marginBottom: '1.25rem', filter: 'brightness(0) invert(1)' }} />
+            <div style={{ background: 'var(--white)', padding: '0.5rem 1rem', borderRadius: 'var(--radius-md)', display: 'inline-block', marginBottom: '1.25rem' }}>
+              <img src="/salemlogo.png" alt="Salem Purified Water LLC" style={{ height: '42px', width: 'auto', display: 'block' }} />
+            </div>
             <p style={{ color: 'var(--mid-gray)', lineHeight: 1.7, fontSize: '0.95rem', maxWidth: '280px' }}>
               Currently in due diligence, engineering review, manufacturing planning, and capital formation for a state-of-the-art purified water facility in Salem, Missouri.
             </p>
