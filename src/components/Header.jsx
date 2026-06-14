@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Droplets } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,17 +48,12 @@ const Header = () => {
         padding: '1rem var(--spacing-sm)' 
       }}>
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
-          <div className="animate-pulse-soft" style={{ 
-            background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))', 
-            padding: '0.5rem', 
-            borderRadius: '50%', 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center',
-            boxShadow: 'var(--shadow-colored)'
-          }}>
-            <Droplets size={24} color="white" />
-          </div>
+          <img 
+            src="/salemlogo.png" 
+            alt="Salem Purified Water Logo" 
+            style={{ height: '48px', width: 'auto', objectFit: 'contain' }} 
+            className="animate-pulse-soft"
+          />
           <div>
             <h1 style={{ fontSize: '1.25rem', margin: 0, color: 'var(--color-text-main)', letterSpacing: '-0.02em' }}>Salem Purified Water</h1>
             <p className="gradient-text-sunset" style={{ fontSize: '0.7rem', margin: 0, textTransform: 'uppercase', letterSpacing: '1px', fontWeight: '600' }}>Project In Development</p>
